@@ -14,6 +14,15 @@ GitHub 开源趋势雷达从 GitHub Trending、GitHub Search 和 OSS Insight 获
 
 ![GitHub 开源趋势与项目复用雷达报告主页](assets/report-homepage.png)
 
+## 下载与安装
+
+有两种获取方式：
+
+1. **下载发布包（推荐，无需 Git）**：前往 [Releases 页面](https://github.com/mingyu5650/github-trend-radar/releases/latest) 下载 `github-trend-radar.zip` 并解压。
+   - 作为技能使用：将解压出的 `github-trend-radar/` 文件夹放入 `~/.workbuddy/skills/`（用户级）或 `{项目}/.workbuddy/skills/`（项目级）。
+   - 作为命令行工具使用：直接在解压目录运行下方命令即可。
+2. **克隆源码**：`git clone https://github.com/mingyu5650/github-trend-radar.git`
+
 ## 环境要求
 
 - Python 3.10 或更高版本
