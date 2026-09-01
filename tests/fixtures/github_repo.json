@@ -1,0 +1,15 @@
+{
+  "full_name": "org/tool",
+  "html_url": "https://github.com/org/tool",
+  "description": "AI coding CLI",
+  "stargazers_count": 2000,
+  "forks_count": 100,
+  "open_issues_count": 12,
+  "default_branch": "main",
+  "language": "Python",
+  "topics": ["ai", "cli"],
+  "license": {"spdx_id": "MIT"},
+  "created_at": "2026-01-01T00:00:00Z",
+  "pushed_at": "2026-07-13T00:00:00Z",
+  "archived": false
+}

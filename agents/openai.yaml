@@ -1,0 +1,4 @@
+interface:
+  display_name: "GitHub 开源趋势雷达"
+  short_description: "分析 GitHub 热度、复用价值与开源项目替代关系"
+  default_prompt: "使用 $github-trend-radar 生成今天的 GitHub 开源趋势与项目复用报告。"

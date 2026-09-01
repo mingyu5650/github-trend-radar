@@ -1,0 +1,25 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+env/
+*.egg-info/
+
+# Generated radar data and reports
+GitHub开源趋势雷达/
+配置/
+最新报告/
+历史归档/
+运行状态/
+*.xlsx
+*.xlsm
+*.lock
+
+# Local environment and editor files
+.DS_Store
+.env
+.env.*
+!.env.example
+.idea/
+.vscode/

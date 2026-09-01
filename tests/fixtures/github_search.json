@@ -1,0 +1,32 @@
+{
+  "items": [
+    {
+      "full_name": "org/tool",
+      "html_url": "https://github.com/org/tool",
+      "description": "AI coding CLI",
+      "stargazers_count": 2000,
+      "forks_count": 100,
+      "language": "Python",
+      "topics": ["ai", "cli"],
+      "license": {"spdx_id": "MIT"},
+      "created_at": "2026-01-01T00:00:00Z",
+      "pushed_at": "2026-07-13T00:00:00Z",
+      "archived": false,
+      "open_issues_count": 12
+    },
+    {
+      "full_name": "org/awesome-ai",
+      "html_url": "https://github.com/org/awesome-ai",
+      "description": "A curated awesome list",
+      "stargazers_count": 1500,
+      "forks_count": 80,
+      "language": null,
+      "topics": ["awesome-list"],
+      "license": {"spdx_id": "CC0-1.0"},
+      "created_at": "2025-01-01T00:00:00Z",
+      "pushed_at": "2026-07-10T00:00:00Z",
+      "archived": false,
+      "open_issues_count": 2
+    }
+  ]
+}

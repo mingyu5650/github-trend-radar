@@ -1,0 +1,12 @@
+{
+  "data": {
+    "rows": [
+      {
+        "repo_name": "org/tool",
+        "stars": "640",
+        "primary_language": "Python",
+        "description": "AI coding CLI"
+      }
+    ]
+  }
+}
