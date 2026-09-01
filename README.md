@@ -10,6 +10,10 @@ GitHub 开源趋势雷达从 GitHub Trending、GitHub Search 和 OSS Insight 获
 
 本项目既可以作为独立的 Python 命令行工具使用，也可以作为 Codex 技能使用。基础 GitHub API 访问不需要认证；如需更高的 API 速率限制，可以设置环境变量 `GITHUB_TOKEN`。工具不会把 Token、请求头或 Cookie 写入报告。
 
+## 报告页面预览
+
+![GitHub 开源趋势与项目复用雷达报告主页](assets/report-homepage.png)
+
 ## 环境要求
 
 - Python 3.10 或更高版本
