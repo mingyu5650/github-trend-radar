@@ -1,25 +1,30 @@
 ---
 name: github-trend-radar
-description: Use when users want GitHub 热门项目、总 Star 排名、日增或周增榜、开源技术趋势、项目复用评估、历史退榜原因、替代项目判断，或观察清单中的版本升级与维护状态分析。
+description: "GitHub 开源趋势雷达：抓取并分析 GitHub 热门项目，输出总 Star 榜、24 小时/7 天增长榜、分类趋势、可复用项目评分与观察清单维护状态，并生成 Markdown/HTML 日报。当用户要求查看 GitHub 趋势、开源技术趋势、热门仓库排行、项目复用评估、历史退榜原因、替代项目判断，或查看观察清单的版本升级与维护状态时使用。Use when users want GitHub trending repos, star rankings, daily/weekly growth, or open-source trend analysis."
 ---
 
 # GitHub 开源趋势雷达
 
 ## 启动
 
-从项目根目录执行。先运行 `python3 scripts/radar.py --help`，再按帮助选择命令；作为技能安装到其他项目时，使用本技能目录中的 `scripts/radar.py`。`--workspace` 是全局参数，必须放在子命令前。
+从项目根目录执行。先运行 `radar.py --help`，再按帮助选择命令；`--workspace` 是全局参数，必须放在子命令前。
+
+**Python 环境**：需要 Python 3.10+。先安装依赖：`pip install -r requirements.txt`（含 openpyxl、PyYAML）。之后直接用 `python3 radar.py ...` 即可；若当前 `python3` 未安装依赖请先安装，或把你的解释器路径通过 `run_daily_report.sh` 的 `PYTHON` 环境变量传入——命令本身不写死解释器。
 
 ```bash
-python3 scripts/radar.py --workspace /path/to/workspace report
-python3 scripts/radar.py repo openai/codex
-python3 scripts/radar.py compare old-owner/old-repo new-owner/new-repo
-python3 scripts/radar.py watchlist
+PY=python3   # 如本机解释器路径特殊，改成绝对路径，或用 run_daily_report.sh 的 PYTHON 环境变量覆盖
+$PY .workbuddy/skills/github-trend-radar/scripts/radar.py --workspace /path/to/workspace report
+$PY .workbuddy/skills/github-trend-radar/scripts/radar.py repo openai/codex
+$PY .workbuddy/skills/github-trend-radar/scripts/radar.py compare old-owner/old-repo new-owner/new-repo
+$PY .workbuddy/skills/github-trend-radar/scripts/radar.py watchlist
 ```
+
+网络请求建议设置 CA 证书（与 `scripts/run_daily_report.sh` 一致）：`export SSL_CERT_FILE=/path/to/certifi/cacert.pem`（替换为你的 certifi 路径，或依赖系统证书；脚本通过 `CERTIFI_PEM` 环境变量传入）。
 
 ## 选择模式
 
 - 运行无 `--category` 的 `report` 生成完整报告并默认保存；日期统一使用 `Asia/Shanghai`。本项目的默认根目录为 `GitHub开源趋势雷达/`；指定 `--workspace` 时写入该目录之下。
-- 若需要把日报资产放在项目外的专用目录，使用 `--output-root /path/to/GitHub开源趋势雷达`；该目录直接包含 `配置/`、`最新报告/`、`历史归档/` 与 `运行状态/`。日常运行脚本通过 `RADAR_WORKSPACE`、`RADAR_OUTPUT_ROOT` 和 `PYTHON_BIN` 配置路径，不依赖特定用户目录。
+- 若需要把日报资产放在项目外的专用目录，使用 `--output-root /path/to/GitHub开源趋势雷达`；该目录直接包含 `配置/`、`最新报告/`、`历史归档/` 与 `运行状态/`。日常运行脚本 `scripts/run_daily_report.sh` 通过环境变量 `OUTPUT_ROOT` / `PYTHON` / `CERTIFI_PEM` 配置路径，默认在技能目录所在项目的 `GitHub开源趋势雷达/` 下生成资产，可覆盖这些变量指向任意目录。
 - 运行 `report --category AI` 默认仅预览；增加 `--save` 后写入独立的分类 Markdown/JSON，不得覆盖完整日报同日期文件或归档，也不得写全局 history 或更新 Excel。
 - 运行 `repo` 或 `compare` 仅输出 JSON，不持久化。
 - 首次运行任一 `report` 会初始化分类规则；首次运行完整 `report` 或 `watchlist` 会初始化固定 16 列 Excel 模板。已有 Excel 严格只更新 M–P 自动列，不得覆盖、移动或重排 A–L 人工列。
@@ -66,3 +71,4 @@ python3 scripts/radar.py watchlist
 - **改动前**：按评分降序，同分按仓库名排序（未显式实现）
 - **改动后**：在 `_model()` 中显式调用 `reusable.sort(key=lambda x: (-x.get("score", 0), x.get("repo", "")))`
 - **代码位置**：`radar.py` `_model()` 方法，`reusable` 赋值后
+
